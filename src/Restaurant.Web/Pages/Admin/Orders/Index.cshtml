@@ -1,0 +1,31 @@
+@page
+@model Restaurant.Web.Pages.Admin.Orders.IndexModel
+@{
+    ViewData["Title"] = "Orders";
+}
+
+<h1>Orders</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>User</th>
+            <th>Created</th>
+            <th>Status</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var o in Model.Orders)
+    {
+        <tr>
+            <td>@o.Id</td>
+            <td>@o.UserId</td>
+            <td>@o.CreatedAtUtc.ToLocalTime()</td>
+            <td>@o.Status</td>
+            <td>@o.TotalAmount.ToString("C")</td>
+        </tr>
+    }
+    </tbody>
+ </table>
